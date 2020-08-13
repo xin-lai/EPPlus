@@ -1,23 +1,26 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.1;netstandard2.0;net35;net40</TargetFrameworks>
+    <TargetFrameworks>netstandard2.1;netstandard2.0</TargetFrameworks>
     <AssemblyVersion>4.5.3.3</AssemblyVersion>
     <FileVersion>4.5.3.3</FileVersion>
-    <Version>4.5.3.3</Version>
+    <Version>4.6</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseUrl></PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/JanKallman/EPPlus</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/xin-lai/</PackageProjectUrl>
     <Authors>Jan Källman</Authors>
-    <Company></Company>
+    <Company>湖南心莱信息科技有限公司</Company>
     <Product>EPPlus</Product>
     <Description>Create advanced Excel spreadsheets using .NET</Description>
-    <AssemblyName>EPPlus</AssemblyName>
+    <AssemblyName>Magicodes.EPPlus</AssemblyName>
     <RootNamespace>EPPlus</RootNamespace>
-    <RepositoryUrl></RepositoryUrl>
+    <RepositoryUrl>https://github.com/xin-lai/EPPlus</RepositoryUrl>
     <PackageTags>Excel ooxml</PackageTags>
     <Copyright>Jan Källman 2020</Copyright>
     <PackageReleaseNotes>
+      # EPPlus 4.6
+      添加LoadFromDictionaries以支持动态类型
+
       # EPPlus 4.5.3.3
 
       ## Announcement: This is the last version of EPPlus under the LGPL License
