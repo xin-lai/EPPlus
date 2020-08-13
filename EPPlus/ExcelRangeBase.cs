@@ -63,7 +63,7 @@ namespace OfficeOpenXml
     /// <summary>
     /// A range of cells 
     /// </summary>
-    public class ExcelRangeBase : ExcelAddress, IExcelCell, IDisposable, IEnumerable<ExcelRangeBase>, IEnumerator<ExcelRangeBase>
+    public partial class ExcelRangeBase : ExcelAddress, IExcelCell, IDisposable, IEnumerable<ExcelRangeBase>, IEnumerator<ExcelRangeBase>
     {
         /// <summary>
         /// Reference to the worksheet
