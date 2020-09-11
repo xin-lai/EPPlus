@@ -51,12 +51,14 @@ using OfficeOpenXml.DataValidation.Contracts;
 using System.Reflection;
 using OfficeOpenXml.Style.XmlAccess;
 using System.Security;
+using EPPlus.Utils;
 using OfficeOpenXml.ConditionalFormatting;
 using OfficeOpenXml.ConditionalFormatting.Contracts;
 using OfficeOpenXml.FormulaParsing.LexicalAnalysis;
 using w = System.Windows;
 using OfficeOpenXml.Utils;
 using OfficeOpenXml.Compatibility;
+using DescriptionAttribute = System.ComponentModel.DescriptionAttribute;
 
 namespace OfficeOpenXml
 {
@@ -1089,11 +1091,11 @@ namespace OfficeOpenXml
 
         private static string GetDateText(DateTime d, string format, ExcelNumberFormatXml.ExcelFormatTranslator nf)
         {
-            if(nf.SpecialDateFormat==ExcelNumberFormatXml.ExcelFormatTranslator.eSystemDateFormat.SystemLongDate)
+            if (nf.SpecialDateFormat == ExcelNumberFormatXml.ExcelFormatTranslator.eSystemDateFormat.SystemLongDate)
             {
                 return d.ToLongDateString();
             }
-            else if(nf.SpecialDateFormat == ExcelNumberFormatXml.ExcelFormatTranslator.eSystemDateFormat.SystemLongTime)
+            else if (nf.SpecialDateFormat == ExcelNumberFormatXml.ExcelFormatTranslator.eSystemDateFormat.SystemLongTime)
             {
                 return d.ToLongTimeString();
             }
@@ -2070,6 +2072,7 @@ namespace OfficeOpenXml
                             header = t.Name.Replace('_', ' ');
                         }
                     }
+
                     //_worksheet.SetValueInner(row, col++, header);
                     values[row, col++] = header;
                 }
@@ -2099,6 +2102,20 @@ namespace OfficeOpenXml
                         }
                         else if (t is PropertyInfo)
                         {
+                            //
+                            var isEnum = ((PropertyInfo)t).PropertyType.IsEnum;
+                            if (isEnum)
+                            {
+                                var dAttr =
+                                    ((PropertyInfo)t).PropertyType.
+                                GetEnumDefinitionList();
+                                values[row, col++] =
+                                    dAttr.FirstOrDefault(f => f.Item1 ==
+                                                              ((PropertyInfo)t).GetValue(item, null).ToString())
+                                        ?.Item4 ?? ((PropertyInfo)t).GetValue(item, null);
+                                continue;
+                            }
+
                             values[row, col++] = ((PropertyInfo)t).GetValue(item, null);
                         }
                         else if (t is FieldInfo)
