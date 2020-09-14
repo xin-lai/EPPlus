@@ -2,25 +2,27 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1;netstandard2.0;</TargetFrameworks>
-    <AssemblyVersion>4.6.1.0</AssemblyVersion>
-    <FileVersion>4.6.1.0</FileVersion>
-    <Version>4.6.1</Version>
+    <AssemblyVersion>4.6.2.0</AssemblyVersion>
+    <FileVersion>4.6.2.0</FileVersion>
+    <Version>4.6.2</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/xin-lai/</PackageProjectUrl>
     <Authors>Magicodes</Authors>
     <Company>湖南心莱信息科技有限公司</Company>
-    <Product>EPPlus</Product>
+    <Product>Magicodes.EPPlus</Product>
     <Description>Create advanced Excel spreadsheets using .NET</Description>
     <AssemblyName>Magicodes.EPPlus</AssemblyName>
     <RootNamespace>EPPlus</RootNamespace>
     <RepositoryUrl>https://github.com/xin-lai/EPPlus</RepositoryUrl>
     <PackageTags>Excel ooxml</PackageTags>
     <Copyright>Magicodes 2020</Copyright>
-    <PackageReleaseNotes>
+    <PackageReleaseNotes># EPPlus 4.6.2
+      添加值映射支持
+
       # EPPlus 4.6.1
       添加LoadFromDictionaries以支持动态类型
-    </PackageReleaseNotes>
+</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>OpenOfficeXml.snk</AssemblyOriginatorKeyFile>
     <NeutralLanguage />
