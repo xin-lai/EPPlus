@@ -10,13 +10,13 @@ namespace OfficeOpenXml.LoadFunctions
 {
     internal class LoadFromDictionaries : LoadFunctionBase
     {
-        public LoadFromDictionaries(ExcelRangeBase range, IEnumerable<IDictionary<string, object>> items, LoadFromDictionariesParams parameters) 
+        public LoadFromDictionaries(ExcelRangeBase range, IEnumerable<IDictionary<string, object>> items, LoadFromDictionariesParams parameters)
             : base(range, parameters)
         {
             _items = items;
             _keys = parameters.Keys;
             _headerParsingType = parameters.HeaderParsingType;
-            if(items == null || !items.Any())
+            if (items == null || !items.Any())
             {
                 _keys = Enumerable.Empty<string>();
             }
@@ -38,13 +38,10 @@ namespace OfficeOpenXml.LoadFunctions
         private readonly IEnumerable<string> _keys;
         private readonly HeaderParsingTypes _headerParsingType;
 
-        
-
         protected override void LoadInternal(object[,] values)
         {
-            
             int col = 0, row = 0;
-            if (PrintHeaders && _keys.Count() > 0)
+            if (PrintHeaders && _keys.Any())
             {
                 foreach (var key in _keys)
                 {
