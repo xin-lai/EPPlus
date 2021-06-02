@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1;netstandard2.0;</TargetFrameworks>
-    <AssemblyVersion>4.6.2.0</AssemblyVersion>
-    <FileVersion>4.6.2.0</FileVersion>
-    <Version>4.6.2</Version>
+    <AssemblyVersion>4.6.4.0</AssemblyVersion>
+    <FileVersion>4.6.4.0</FileVersion>
+    <Version>4.6.4</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/xin-lai/</PackageProjectUrl>
@@ -17,7 +17,11 @@
     <RepositoryUrl>https://github.com/xin-lai/EPPlus</RepositoryUrl>
     <PackageTags>Excel ooxml</PackageTags>
     <Copyright>Magicodes 2020</Copyright>
-    <PackageReleaseNotes># EPPlus 4.6.2
+    <PackageReleaseNotes>
+      
+        # EPPlus 4.6.4
+    Fix Image export is slow
+      # EPPlus 4.6.2
       添加值映射支持
 
       # EPPlus 4.6.1
