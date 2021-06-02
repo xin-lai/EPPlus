@@ -65,4 +65,4 @@ using System.Security;
     //[assembly: AssemblyVersion("4.5.0.0")]
     //[assembly: AssemblyFileVersion("4.5.0.0")]
 #endif
-[assembly: AllowPartiallyTrustedCallers]
+//[assembly: AllowPartiallyTrustedCallers]

@@ -1,4 +1,25 @@
-﻿/*******************************************************************************
+﻿
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*******************************************************************************
  * You may amend and distribute as you like, but don't remove this header!
  *
  * EPPlus provides server-side generation of Excel 2007/2010 spreadsheets.
@@ -33,8 +54,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Collections;
-using OfficeOpenXml.Drawing.Vml;
-namespace OfficeOpenXml
+using OfficeOpenXml.Drawing.Vml;namespace OfficeOpenXml
 {
     /// <summary>
     /// This is the store for all Rows, Columns and Cells.

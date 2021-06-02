@@ -39,9 +39,6 @@ using System.Xml;
 using OfficeOpenXml.Style;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using OfficeOpenXml.FormulaParsing.Utilities;
-
 namespace OfficeOpenXml
 {
     /// <summary>
@@ -770,16 +767,13 @@ namespace OfficeOpenXml
                 return "";
             }
 
-            //node.Attributes.Where();
-            //node.Attributes.GetEnumerator()
+            //XmlNode nameNode = node.SelectSingleNode(path, NameSpaceManager);
             var enumerator = node.Attributes;
             var nameNode = enumerator.GetNamedItem(path.Replace("@", ""));
-            //var nameNodes = node.SelectNodes(path, NameSpaceManager);
-            //var nameNode = nameNodes.Item(0);
-            //return "";
-            //var nodes = node.SelectNodes(path);
-
-            //XmlNode nameNode = node.SelectSingleNode(path, NameSpaceManager);
+            if (nameNode==null)
+            {
+                nameNode = node.SelectSingleNode(path, NameSpaceManager);
+            }
             if (nameNode != null)
             {
                 if (nameNode.NodeType == XmlNodeType.Attribute)

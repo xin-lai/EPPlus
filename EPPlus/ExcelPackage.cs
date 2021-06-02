@@ -531,7 +531,7 @@ namespace OfficeOpenXml
 
             var build = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json", true,false);            
+                .AddJsonFile("appsettings.json", true, false);
             var c = build.Build();
 
             var v = c["EPPlus:ExcelPackage:Compatibility:IsWorksheets1Based"];
@@ -540,7 +540,7 @@ namespace OfficeOpenXml
 #endif
             if (v != null)
             {
-                if(Boolean.TryParse(v.ToLowerInvariant(), out bool value))
+                if (Boolean.TryParse(v.ToLowerInvariant(), out bool value))
                 {
                     Compatibility.IsWorksheets1Based = value;
                 }
