@@ -816,7 +816,7 @@ namespace OfficeOpenXml
         //    return new string(newChars, 0, (int)(currentChar - newChars));
         //}
 
-        internal string GetXmlNodeString(XmlNode node, string path)
+        internal static string GetXmlNodeString(XmlNode node, string path)
         {
             if (node == null)
             {
