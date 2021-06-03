@@ -332,7 +332,7 @@ namespace OfficeOpenXml
                         }
 
                         // Get the attribute (if exists)
-                        XmlAttribute attribute = (XmlAttribute) (node.Attributes.GetNamedItem(attributeName));
+                        XmlAttribute attribute = (XmlAttribute)(node.Attributes.GetNamedItem(attributeName));
 
                         // Remove the attribute if value is empty (not null)
                         if (attributeValue == string.Empty)
@@ -567,7 +567,7 @@ namespace OfficeOpenXml
             {
                 if (node is XmlAttribute)
                 {
-                    var att = (XmlAttribute) node;
+                    var att = (XmlAttribute)node;
                     att.OwnerElement.Attributes.Remove(att);
                 }
                 else
@@ -795,6 +795,27 @@ namespace OfficeOpenXml
             }
         }
 
+        //static unsafe string replace(string s)
+        //{
+        //    int len = s.Length;
+        //    char* newChars = stackalloc char[len];
+        //    char* currentChar = newChars;
+
+        //    for (int i = 0; i < len; ++i)
+        //    {
+        //        char c = s[i];
+        //        switch (c)
+        //        {
+        //            case '@':
+        //                continue;
+        //            default:
+        //                *currentChar++ = c;
+        //                break;
+        //        }
+        //    }
+        //    return new string(newChars, 0, (int)(currentChar - newChars));
+        //}
+
         internal string GetXmlNodeString(XmlNode node, string path)
         {
             if (node == null)
@@ -804,41 +825,46 @@ namespace OfficeOpenXml
 
             XmlNode nameNode = null;
             //XmlNode nameNode = node.SelectSingleNode(path, NameSpaceManager);
-            if (path.Contains("@"))
+            if (path.IndexOf('@') >= 0)
             {
                 var enumerator = node.Attributes;
-                nameNode = enumerator.GetNamedItem(path.Replace("@", ""));
+                if (enumerator != null) nameNode = enumerator.GetNamedItem(path.Replace("@", ""));
             }
 
             if (nameNode == null)
             {
-                var nodes = node.Cast<XmlNode>();
-                //nameNode = node.SelectSingleNode(path, NameSpaceManager);
-                //nameNode = nodes.FirstOrDefault(f => path.Contains((string) f.Name));
-                foreach (var item in nodes)
+                var nodes = node.GetEnumerator();
+                while (nodes.MoveNext())
                 {
-                    if (path.Contains(item.Name))
+                    if (path.IndexOf('d') == 0)
                     {
-                        nameNode = item;
-                        break;
+                        path = path.TrimStart('d', ':');
+                        var arry = path.Split('/');
+                        path = arry[0];
                     }
+
+                    if (!(nodes.Current is XmlNode xmlNode) || path != xmlNode.Name) continue;
+                    if (xmlNode.Attributes.Count > 0)
+                    {
+                        nameNode = xmlNode.Attributes[0];
+                    }
+                    else
+                    {
+                        nameNode = xmlNode;
+                    }
+                    break;
                 }
             }
 
             if (nameNode != null)
             {
-                if (nameNode.NodeType == XmlNodeType.Attribute) {
+                if (nameNode.NodeType == XmlNodeType.Attribute)
+                {
                     return nameNode.Value != null ? nameNode.Value : "";
                 }
-                else
-                {
-                    return nameNode.InnerText;
-                }
+                return nameNode.InnerText;
             }
-            else
-            {
-                return "";
-            }
+            return "";
         }
 
         internal string GetXmlNodeString(string path)

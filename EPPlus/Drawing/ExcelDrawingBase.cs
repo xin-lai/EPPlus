@@ -15,7 +15,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
  * See the GNU Lesser General Public License for more details.
  *
- * The GNU Lesser General Public License can be viewed at http://www.opensource.org/licenses/lgpl-license.php
+ * The GNU Lesser General Public License can be viewed at http://www.opensource.org/licenses/lgpl-license.phpOfficeOpenXml.Drawing.ExcelDrawing.GetPixelTop()
  * If you unfamiliar with this license or have questions about it, here is an http://www.gnu.org/licenses/gpl-faq.html
  *
  * All code and executables are provided "as is" with no warranty either express or implied. 
@@ -462,14 +462,14 @@ namespace OfficeOpenXml.Drawing
             int pix = 0;
             for (int row = 0; row < From.Row; row++)
             {
-                ////pix += (int)(GetRowHeight(row + 1) / 0.75);
-                //if (!_rowHeights.ContainsKey(row))
-                //{
-                //    _rowHeights.Add(row, GetRowHeight(row + 1));
-                //}
-                //pix += (int)(_rowHeights[row] / 0.75);
+                //pix += (int)(GetRowHeight(row + 1) / 0.75);
+                if (!_rowHeights.ContainsKey(row))
+                {
+                    _rowHeights.Add(row, GetRowHeight(row + 1));
+                }
+                pix += (int)(_rowHeights[row] / 0.75);
             }
-            //pix += From.RowOff / EMU_PER_PIXEL;
+            pix += From.RowOff / EMU_PER_PIXEL;
             return pix;
         }
         internal int GetPixelWidth()
