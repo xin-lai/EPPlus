@@ -715,9 +715,8 @@ namespace OfficeOpenXml
 
         internal int? GetXmlNodeIntNull(string path)
         {
-            int i;
             string s = GetXmlNodeString(path);
-            if (s != "" && TryParse(s, NumberStyles.Number, CultureInfo.InvariantCulture, out i))
+            if (s != "" && TryParse(s, NumberStyles.Number, CultureInfo.InvariantCulture, out var i))
             {
                 return i;
             }
