@@ -836,17 +836,20 @@ namespace OfficeOpenXml
                 var nodes = node.GetEnumerator();
                 while (nodes.MoveNext())
                 {
-                    if (path.IndexOf('d') == 0)
+                    if (path[0] == 'd')
                     {
+                        var pos = path.IndexOf('/');
+                        if (pos > 0)
+                        {
+                            path = path.Substring(0, pos);
+                        }
                         path = path.TrimStart('d', ':');
-                        var arry = path.Split('/');
-                        path = arry[0];
                     }
 
                     if (!(nodes.Current is XmlNode xmlNode) || path != xmlNode.Name) continue;
                     if (xmlNode.Attributes.Count > 0)
                     {
-                        nameNode = xmlNode.Attributes[0];
+                         nameNode = xmlNode.Attributes[0];
                     }
                     else
                     {
