@@ -40,6 +40,7 @@ using OfficeOpenXml.Style;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using OfficeOpenXml.Utils;
 using static System.Int32;
 
 namespace OfficeOpenXml
@@ -848,7 +849,7 @@ namespace OfficeOpenXml
                     if (!(nodes.Current is XmlNode xmlNode) || path != xmlNode.Name) continue;
                     if (xmlNode.Attributes.Count > 0)
                     {
-                         nameNode = xmlNode.Attributes[0];
+                        nameNode = xmlNode.Attributes[0];
                     }
                     else
                     {
@@ -929,7 +930,7 @@ namespace OfficeOpenXml
 
         internal static void LoadXmlSafe(XmlDocument xmlDoc, string xml, Encoding encoding)
         {
-            var stream = new MemoryStream(encoding.GetBytes(xml));
+            var stream = RecyclableMemoryStream.GetStream(encoding.GetBytes(xml));
             LoadXmlSafe(xmlDoc, stream);
         }
     }

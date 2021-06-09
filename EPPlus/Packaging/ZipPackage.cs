@@ -135,7 +135,7 @@ namespace OfficeOpenXml.Packaging
                                 else
                                 {                                    
                                     var part = new ZipPackagePart(this, e);
-                                    part.Stream = new MemoryStream();
+                                    part.Stream = RecyclableMemoryStream.GetStream();
                                     part.Stream.Write(b, 0, b.Length);
                                     Parts.Add(GetUriKey(e.FileName), part);
                                 }

@@ -29,6 +29,7 @@
 
 using System;
 using System.IO;
+using OfficeOpenXml.Utils;
 
 namespace OfficeOpenXml.Packaging.Ionic.Zlib
 {
@@ -944,7 +945,7 @@ namespace OfficeOpenXml.Packaging.Ionic.Zlib
         /// <returns>The string in compressed form</returns>
         public static byte[] CompressString(String s)
         {
-            using (var ms = new MemoryStream())
+            using (var ms = RecyclableMemoryStream.GetStream())
             {
                 System.IO.Stream compressor =
                     new GZipStream(ms, CompressionMode.Compress, CompressionLevel.BestCompression);
@@ -972,7 +973,7 @@ namespace OfficeOpenXml.Packaging.Ionic.Zlib
         /// <returns>The data in compressed form</returns>
         public static byte[] CompressBuffer(byte[] b)
         {
-            using (var ms = new MemoryStream())
+            using (var ms = RecyclableMemoryStream.GetStream())
             {
                 System.IO.Stream compressor =
                     new GZipStream( ms, CompressionMode.Compress, CompressionLevel.BestCompression );
@@ -997,7 +998,7 @@ namespace OfficeOpenXml.Packaging.Ionic.Zlib
         /// <returns>The uncompressed string</returns>
         public static String UncompressString(byte[] compressed)
         {
-            using (var input = new MemoryStream(compressed))
+            using (var input = RecyclableMemoryStream.GetStream(compressed))
             {
                 Stream decompressor = new GZipStream(input, CompressionMode.Decompress);
                 return ZlibBaseStream.UncompressString(compressed, decompressor);

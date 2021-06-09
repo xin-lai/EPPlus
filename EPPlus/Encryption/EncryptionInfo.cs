@@ -34,6 +34,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml;
+using OfficeOpenXml.Utils;
 
 namespace OfficeOpenXml.Encryption
 {
@@ -565,7 +566,7 @@ namespace OfficeOpenXml.Encryption
         }
         internal byte[] WriteBinary()
         {
-            MemoryStream ms = new MemoryStream();
+            MemoryStream ms = RecyclableMemoryStream.GetStream();
             BinaryWriter bw = new BinaryWriter(ms);
 
             bw.Write(MajorVersion);

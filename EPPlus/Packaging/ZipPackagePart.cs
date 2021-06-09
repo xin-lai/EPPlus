@@ -34,6 +34,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using OfficeOpenXml.Packaging.Ionic.Zip;
+using OfficeOpenXml.Utils;
 
 namespace OfficeOpenXml.Packaging
 {
@@ -91,7 +92,7 @@ namespace OfficeOpenXml.Packaging
         {
             if (_stream == null || fileMode == FileMode.CreateNew || fileMode == FileMode.Create)
             {
-                _stream = new MemoryStream();
+                _stream = RecyclableMemoryStream.GetStream();
             }
             else
             {
@@ -123,7 +124,7 @@ namespace OfficeOpenXml.Packaging
         public Uri Uri { get; private set; }
         public Stream GetZipStream()
         {
-            MemoryStream ms = new MemoryStream();
+            MemoryStream ms = RecyclableMemoryStream.GetStream();
             ZipOutputStream os = new ZipOutputStream(ms);
             return os;
         }

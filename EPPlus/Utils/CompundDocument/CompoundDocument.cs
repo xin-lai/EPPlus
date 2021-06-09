@@ -86,7 +86,7 @@ namespace OfficeOpenXml.Utils.CompundDocument
         }
         internal void Read(byte[] doc) 
         {
-            Read(new MemoryStream(doc));
+            Read(RecyclableMemoryStream.GetStream(doc));
         }
         internal void Read(MemoryStream ms)
         {

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using OfficeOpenXml.Utils;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace OfficeOpenXml.Compatibility
 {
@@ -12,7 +8,7 @@ namespace OfficeOpenXml.Compatibility
     {
         internal static byte[] GetImageAsByteArray(Image image)
         {
-            var ms = new MemoryStream();
+            var ms = RecyclableMemoryStream.GetStream();
             if (image.RawFormat.Guid == ImageFormat.Gif.Guid)
             {
                 image.Save(ms, ImageFormat.Gif);

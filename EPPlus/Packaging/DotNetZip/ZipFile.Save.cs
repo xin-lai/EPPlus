@@ -28,6 +28,7 @@
 using System;
 using System.IO;
 using System.Collections.Generic;
+using OfficeOpenXml.Utils;
 
 namespace OfficeOpenXml.Packaging.Ionic.Zip
 {
@@ -521,7 +522,7 @@ namespace OfficeOpenXml.Packaging.Ionic.Zip
         ///     zip.Password = "VerySecret.";
         ///     zip.Encryption = EncryptionAlgorithm.WinZipAes128;
         ///     zip.AddFile(sourceFileName);
-        ///     MemoryStream output = new MemoryStream();
+        ///     MemoryStream output = RecyclableMemoryStream.GetStream();
         ///     zip.Save(output);
         ///
         ///     byte[] zipbytes = output.ToArray();
@@ -605,7 +606,7 @@ namespace OfficeOpenXml.Packaging.Ionic.Zip
             // write to a memory stream in order to keep the
             // CDR contiguous
             Int64 aLength = 0;
-            using (var ms = new MemoryStream())
+            using (var ms = RecyclableMemoryStream.GetStream())
             {
                 foreach (ZipEntry e in entries)
                 {

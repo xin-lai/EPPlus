@@ -138,4 +138,7 @@
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.IO.RecyclableMemoryStream" Version="2.1.1" />
+  </ItemGroup>
 </Project>
