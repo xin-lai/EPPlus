@@ -188,6 +188,7 @@ namespace OfficeOpenXml.Drawing
         protected internal int _width = int.MinValue, _height = int.MinValue, _top = int.MinValue, _left = int.MinValue;
         bool _doNotAdjust = false;
         static Dictionary<int, double> _textHeights = new Dictionary<int, double>();
+  
         internal ExcelDrawing(ExcelDrawings drawings, XmlNode node, string nameXPath) :
             base(drawings.NameSpaceManager, node)
         {
@@ -634,6 +635,10 @@ namespace OfficeOpenXml.Drawing
         }
         internal void SetPixelHeight(int pixels, float dpi)
         {
+            if (dpi == 0)
+            {
+                return;
+            }
             _doNotAdjust = true;
             ExcelWorksheet ws = _drawings.Worksheet;
             //decimal mdw = ws.Workbook.MaxFontWidth;
@@ -657,13 +662,21 @@ namespace OfficeOpenXml.Drawing
                 To.RowOff = prevPixOff * EMU_PER_PIXEL;
             }
             _doNotAdjust = false;
+
+
         }
         internal void SetPixelWidth(int pixels)
         {
             SetPixelWidth(pixels, STANDARD_DPI);
         }
+
         internal void SetPixelWidth(int pixels, float dpi)
         {
+            if (dpi == 0)
+            {
+                return;
+            }
+            //TODO https://github.com/dotnetcore/Magicodes.IE/issues/285 由于JPG文件问题，暂且将dpi0的情况下不处理
             _doNotAdjust = true;
             ExcelWorksheet ws = _drawings.Worksheet;
             decimal mdw = ws.Workbook.MaxFontWidth;
@@ -683,6 +696,7 @@ namespace OfficeOpenXml.Drawing
             To.ColumnOff = prevPixOff * EMU_PER_PIXEL;
             _doNotAdjust = false;
         }
+
         #endregion
         #region "Public sizing functions"
         /// <summary>

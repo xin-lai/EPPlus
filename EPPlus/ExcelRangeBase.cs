@@ -858,12 +858,11 @@ namespace OfficeOpenXml
 
             var normalSize = Convert.ToSingle(ExcelWorkbook.GetWidthPixels(nf.Name, nf.Size));
 
-            Bitmap b;
-            Graphics g = null;
+            Graphics g;
             try
             {
                 //Check for missing GDI+, then use WPF istead.
-                b = new Bitmap(1, 1);
+                var b = new Bitmap(1, 1);
                 g = Graphics.FromImage(b);
                 g.PageUnit = GraphicsUnit.Pixel;
             }
