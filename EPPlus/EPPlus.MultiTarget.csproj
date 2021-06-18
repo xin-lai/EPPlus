@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.1;netstandard2.0;</TargetFrameworks>
-    <AssemblyVersion>4.6.6.0</AssemblyVersion>
-    <FileVersion>4.6.6.0</FileVersion>
-    <Version>4.6.6</Version>
+    <AssemblyVersion>4.6.7.0</AssemblyVersion>
+    <FileVersion>4.6.7.0</FileVersion>
+    <Version>4.6.7</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseUrl></PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/xin-lai/</PackageProjectUrl>
@@ -18,17 +18,14 @@
     <PackageTags>Excel ooxml</PackageTags>
     <Copyright>Magicodes 2020</Copyright>
     <PackageReleaseNotes>
+      # EPPlus 4.6.7
+      Update https://github.com/dotnetcore/Magicodes.IE/issues/285
       # EPPlus 4.6.6
       Utilize RecyclableMemoryStream instead of "new MemoryStream" all over
       # EPPlus 4.6.5
       性能优化
       # EPPlus 4.6.4
       Fix Image export is slow
-      # EPPlus 4.6.2
-      添加值映射支持
-
-      # EPPlus 4.6.1
-      添加LoadFromDictionaries以支持动态类型
     </PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>OpenOfficeXml.snk</AssemblyOriginatorKeyFile>
